@@ -1,0 +1,92 @@
+{% extends "website/_layouts/base.html" %}
+
+{% load widget_tweaks %}
+
+{% block title %}Cadastro de Livros{% endblock %}
+
+{% block conteudo %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Cadastro de Livro</h5>
+          <p class="card-text">
+            Complete o formulário abaixo para cadastrar
+            um novo <code>Livro</code>.
+          </p>
+          <form method="post">
+            <!-- Não se esqueça dessa tag -->
+            {% csrf_token %}
+
+            <!-- Título -->
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Título</span>
+              </div>
+              {% render_field form.titulo class+="form-control" %}
+            </div>
+
+            <!-- Autores -->
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Autores</span>
+              </div>
+              {% render_field form.autor class+="form-control" %}
+            </div>
+
+            <!-- Gênero -->
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Gêneros</span>
+              </div>              
+             {% render_field form.genero class+="form-control" %}            
+            </div>
+
+            <!-- Idioma -->
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Idioma</span>
+              </div>              
+             {% render_field form.idioma class+="form-control" %}            
+            </div>
+
+            <!--  Ano de publicação -->
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text"> Ano</span>
+              </div>
+              {% render_field form.ano_public class+="form-control" %}
+            </div>
+
+            <!-- Data e hora de cadastro -->
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Data e hora de cadastro</span>
+              </div>
+              {% render_field form.tempo_de_servico class+="form-control" %}
+            </div>
+
+            <!-- Data e hora da última alteração cadastral -->
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Data e hora da última alteração cadastral</span>
+              </div>
+              {% render_field form.remuneracao class+="form-control" %}
+            </div>
+            
+            
+            <hr>
+            <div class="text-right">
+              <a href="{% url 'website:lista_livros' %}" class="btn btn-outline-primary">Voltar</a>
+              <button class="btn btn-primary">Enviar</button>
+            </div>
+
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
